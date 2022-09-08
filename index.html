@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalho de UPX</title>
+</head>
+<style>
+    body{
+        background-color:rgb(49, 49, 163);
+    }
+    .logo{
+        background-color:grey;
+        border-radius: 3vw;
+        border-color: black;
+        border-style: solid;
+        position: absolute;
+
+
+    }
+    .facens{
+        width: 15vw;
+    }
+    .balde{
+        
+        background-color: white;
+        border-radius: 2vw;
+        border-style: solid;
+        position: absolute;
+        left: 20vw;
+        top: 30vw;
+
+
+    }
+    .molde{
+        color: beige;
+        padding: 20px;
+        text-align: center;
+        background-color: black;
+        border-style: solid;
+        border-radius: 2vw;
+        border-color: grey;
+        width: 15vw;
+        height: 8vw;
+        left: 15vw;
+        top: 20vw;
+        position: absolute;
+    }
+    .Chuva{
+        background-color: white;
+        border-radius: 2vw;
+        border-style: solid;
+        position: absolute;
+        left: 45vw;
+        top: 30vw;
+    }
+    .molde2{
+        color: beige;
+        padding: 20px;
+        text-align: center;
+        background-color: black;
+        border-style: solid;
+        border-radius: 2vw;
+        border-color: grey;
+        width: 15vw;
+        height: 8vw;
+        left: 39vw;
+        top: 20vw;
+        position: absolute;
+        
+}
+    .termometro{
+        background-color: white;
+        border-radius: 2vw;
+        border-style: solid;
+        position: absolute;
+        left: 70vw;
+        top: 30vw;
+
+    }
+    .molde3{
+        color: beige;
+        padding: 20px;
+        text-align: center;
+        vertical-align: center;
+        background-color: black;
+        border-style: solid;
+        border-radius: 2vw;
+        border-color: grey;
+        width: 15vw;
+        height: 8vw;
+        left: 64vw;
+        top: 20vw;
+        position: absolute;
+    }
+    @media (max-width: 915px) {
+        
+        .molde{
+        width: 50vw;
+        height: 25vw;
+        left: 25vw;
+        top: 40vw;
+
+        }
+        .logo{
+            width: 100vw;
+            height: 20vw;
+            border-radius: 10vw;
+
+        }
+        .facens{
+            margin-inline-start: 10vw;
+            width: 60vw;
+            margin-inline-start: 17vw;
+        }
+        .balde{
+            background-color: white;
+            top: 70vw;
+            left: 45vw;
+            width: 10vw;
+        }
+        .Chuva{
+        background-color: white;
+        border-radius: 2vw;
+        border-style: solid;
+        position: absolute;
+        width: 10vw;
+        left: 45vw;
+        top: 117vw;
+    }
+    .molde2{
+        width: 50vw;
+        height: 25vw;
+        left: 25vw;
+        top: 87vw;
+
+    }
+    .termometro{
+        background-color: white;
+        border-radius: 2vw;
+        border-style: solid;
+        position: absolute;
+        width: 10vw;
+        left: 45vw;
+        top: 165vw;
+    }
+    .molde3{
+        width: 50vw;
+        height: 25vw;
+        left: 25vw;
+        top: 135vw;
+
+
+    }
+    }
+
+</style>
+
+<body>
+    <logo class="logo">
+        <img src="https://facens.br/wp-content/uploads/2021/03/logo-f-b.png" class="facens">
+    </logo>
+    
+    <quad1 class="quad1">
+    <!-- colocar abaixo -->
+    <molde class="molde">
+        <p id = "0"></p>
+        
+    </molde>
+    <!-- colocar acima -->
+        <img  class="balde" src="https://img.icons8.com/ios-filled/100/waterbucket.png">
+    </quad1>
+<quad2 class="quad2">
+    <!-- colocar abaixo -->
+    <molde2 class="molde2">
+        <p id = "1"></p>
+    </molde2>
+    <!-- colocar acima -->
+        <img class="Chuva" src="https://img.icons8.com/ios-filled/100/heavy-rain.png">
+
+
+</quad2>
+<quad3 class="quad3">
+    <!-- colocar abaixo -->
+    <molde3 class="molde3">
+        <p id = "2"></p>
+    </molde3>
+    <!-- colocar acima -->
+        <img class="termometro" src="https://img.icons8.com/ios-filled/100/thermometer.png">
+
+
+</quad3>
+
+
+
+
+
+<script>function fazGet(url,valor){
+    url+="/"+valor;
+    let request = new XMLHttpRequest();
+    request.open("GET",url,false);
+    request.send();
+    return request.responseText;
+}
+
+function criaLinha(sensor_id){
+    let linha = document.createElement("p");
+    let divValue = document.createTextNode(sensor_id.dataType);
+    divValue.innerHTML = sensor_id.dataType;
+    linha.appendChild(divValue);
+    return linha
+}
+
+function main(){
+    
+    let data0 = JSON.parse(fazGet("https://my-json-server.typicode.com/LucasLCO/api-server/sensores","0"));
+    let data1 = JSON.parse(fazGet("https://my-json-server.typicode.com/LucasLCO/api-server/sensores","1"));
+    let data2 = JSON.parse(fazGet("https://my-json-server.typicode.com/LucasLCO/api-server/sensores","2"));
+
+    var sensor0 = document.getElementById("0");
+    var sensor1 = document.getElementById("1");
+    var sensor2 = document.getElementById("2");
+
+    sensor0.append(criaLinha(data0))
+    sensor1.append(criaLinha(data1))
+    sensor2.append(criaLinha(data2))
+
+}
+
+main()</script>
+</body>
+
+</html>
